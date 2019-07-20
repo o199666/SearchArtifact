@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimaryDark">#0288D1</color>
+    <color name="colorAccent">#0288D1</color>
+    <color name="primary_light">#B3E5FC</color>
+    <color name="accent">#03A9F4</color>
+    <!--文本标题色-->
+    <color name="font_title">#212121</color>
+    <!--文本小字-->
+    <color name="font_context">#757575</color>
+    <!---->
+    <color name="font_fff">#FFFFFF</color>
+    <color name="font_hint_fff">#C4C5C5</color>
+    <color name="bg_fff">#FFFFFF</color>
+    <!--线条-->
+    <color name="divider">#BDBDBD</color>
+    <color name="yellow">#6F3B9AFF</color>
+    <color name="bg">#E0E0E0</color>
+    <color name="bg_soso">#802196F3</color>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SearchArtifact</string>
+
+    <string name="menu_download">下载</string>
+    <string name="menu_local">本地</string>
+    <string name="menu_net">磁力链</string>
+</resources>

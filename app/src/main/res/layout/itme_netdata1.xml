@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/bg_fff"
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{netdata.title}"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center|left"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textColor="@color/font_title"
+            android:textSize="@dimen/text_size_20sp"
+            />
+        <TextView
+            android:id="@+id/filesize_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{netdata.fileSize}"
+            android:gravity="center"
+            android:background="@drawable/sos_btn_text"
+            android:textColor="@color/font_context"
+            android:textSize="@dimen/text_size_16sp"
+            android:padding="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+        <TextView
+            android:id="@+id/dwon_tv"
+            android:layout_width="wrap_content"
+            android:text="点击下载"
+            android:padding="5dp"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textColor="@color/font_fff"
+            android:background="@drawable/sos_btn_border"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+ 

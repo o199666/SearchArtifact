@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/oneFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/oneFragment"
+        android:name="com.bt.searchartifact.fragment.OneFragment"
+        android:label="one_fragment"
+        tools:layout="@layout/one_fragment" />
+    <fragment
+        android:id="@+id/twoFragment"
+        android:name="com.bt.searchartifact.fragment.TwoFragment"
+        android:label="two_fragment"
+        tools:layout="@layout/two_fragment" />
+</navigation>
