@@ -27,7 +27,7 @@ public class MYBT {
      * 获取查询列表
      */
     public static List<NetDataBean> queryNetDataList(String keyword)   {
-        List<NetDataBean> list = null;
+        List<NetDataBean> list = new ArrayList<>();
         String url1 = "http://www.btaxt.com/search/"+keyword+"-first-asc-1";
         Log.e("lianjie:--",url1);
         try {
