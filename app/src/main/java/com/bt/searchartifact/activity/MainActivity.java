@@ -33,7 +33,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.bt.searchartifact.utils.FilesUtil.filterVideo;
-import static com.bt.searchartifact.utils.FilesUtil.getVideoFile;
 
 public class MainActivity extends BaseActivity {
     public BottomNavigationView  bottomNavigationView;

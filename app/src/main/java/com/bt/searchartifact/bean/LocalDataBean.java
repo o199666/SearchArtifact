@@ -2,29 +2,23 @@ package com.bt.searchartifact.bean;
 
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
+import android.net.Uri;
 
 import java.io.Serializable;
+import java.net.URI;
 
 public class LocalDataBean implements Serializable {
     private String fileName;
     private String fileTime;
-    private String fileSize;
+    private long fileSize;
     private String filePtah;
-    private Bitmap fileImag;
+    private String fileImag;
 
-    public Bitmap getFileImag() {
+    public String getFileImag() {
         return fileImag;
     }
 
-    public void setFileImag(Bitmap fileImag) {
-        this.fileImag = fileImag;
-    }
-
-    public LocalDataBean(String fileName, String fileTime, String fileSize, String filePtah, Bitmap fileImag) {
-        this.fileName = fileName;
-        this.fileTime = fileTime;
-        this.fileSize = fileSize;
-        this.filePtah = filePtah;
+    public void setFileImag(String fileImag) {
         this.fileImag = fileImag;
     }
 
@@ -72,14 +66,15 @@ public class LocalDataBean implements Serializable {
     }
 
     public void setFileTime(String fileTime) {
-        this.fileTime = fileTime;
+        this.fileTime =  fileTime;
     }
 
-    public String getFileSize() {
+
+    public long getFileSize() {
         return fileSize;
     }
 
-    public void setFileSize(String fileSize) {
+    public void setFileSize(long fileSize) {
         this.fileSize = fileSize;
     }
 

@@ -1,8 +1,11 @@
 package com.bt.searchartifact.fragment;
 
 import android.annotation.SuppressLint;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +36,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.bt.searchartifact.utils.FilesUtil.filterVideo;
-import static com.bt.searchartifact.utils.FilesUtil.getVideoFile;
+import static com.bt.searchartifact.utils.FilesUtil.getList;
 
 /**
  * Created by CWJ on 2019/7/20.
@@ -85,7 +88,7 @@ public class OneFragment extends BaseFragment {
         Observable.create(new ObservableOnSubscribe<List<LocalDataBean>>() {
             @Override
             public void subscribe(ObservableEmitter<List<LocalDataBean>> emitter) throws Exception {
-                emitter.onNext( filterVideo(getVideoFile(localDataBeans, sd)));
+                emitter.onNext( filterVideo(getList(getContext())));
                 emitter.onComplete();
             }
         }).observeOn(AndroidSchedulers.mainThread())

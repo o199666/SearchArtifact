@@ -39,6 +39,6 @@ public class LocalDataAdapter1 extends BaseQuickAdapter<LocalDataBean, BaseViewH
                     .into(img);
         title.setText(item.getFileName());
         size.setText(item.getFilePtah());
-        time.setText(item.getFileTime());
+        time.setText(item.getFileTime()+"");
     }
 }

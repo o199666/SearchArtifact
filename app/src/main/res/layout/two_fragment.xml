@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<ImageView
-    android:id="@+id/top_iv"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    android:layout_width="match_parent"
-    android:scaleType="fitXY"
-    app:layout_constraintVertical_bias="0.5"
-    android:src="@drawable/top_bg"
-    android:layout_height="200dp" />
 
     <EditText
         android:id="@+id/input_et"
@@ -27,13 +18,12 @@
         android:maxLength="30"
         android:maxLines="1"
         android:singleLine="true"
-        android:textColor="@color/bg_fff"
+        android:textColor="@color/font_context"
         android:textColorHint="@color/font_hint_fff"
-        app:layout_constraintBottom_toBottomOf="@id/top_iv"
         app:layout_constraintHorizontal_weight="7"
-        app:layout_constraintLeft_toLeftOf="@id/top_iv"
-        app:layout_constraintStart_toStartOf="@id/top_iv"
-        app:layout_constraintTop_toTopOf="@id/top_iv" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <Button
         app:layout_constraintWidth_percent="0.28"
         android:id="@+id/search_btn"
@@ -43,19 +33,24 @@
         android:textColor="@color/font_fff"
         android:gravity="center"
         android:background="@drawable/sos_btn_text"
-        app:layout_constraintEnd_toEndOf="@id/top_iv"
-        app:layout_constraintBottom_toBottomOf="@id/top_iv"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/input_et"
-        app:layout_constraintRight_toRightOf="@id/top_iv"
-        app:layout_constraintTop_toTopOf="@id/top_iv" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recy_list2"
-        app:layout_constraintTop_toBottomOf="@id/top_iv"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recy_list2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
+        tools:ignore="MissingConstraints">
     </androidx.recyclerview.widget.RecyclerView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

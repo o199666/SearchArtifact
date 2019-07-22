@@ -26,9 +26,9 @@ public class MYBT {
     /**
      * 获取查询列表
      */
-    public static List<NetDataBean> queryNetDataList(String keyword)   {
+    public static List<NetDataBean> queryNetDataList(String keyword,int index)   {
         List<NetDataBean> list = new ArrayList<>();
-        String url1 = "http://www.btaxt.com/search/"+keyword+"-first-asc-1";
+        String url1 = "http://www.btaxt.com/search/"+keyword+"-first-asc-"+index;
         Log.e("lianjie:--",url1);
         try {
             Document document = Jsoup.connect(url1)
@@ -43,9 +43,9 @@ public class MYBT {
             Elements lie=wall.getElementsByAttributeValue("class","search-item");
             Elements lianjie=wall.getElementsByAttributeValue("class","item-bar");
             Elements xiayiye=wall.getElementsByAttributeValue("class","bottom-pager");
-            for (int i = 0; i <xiayiye.size() ; i++) {
-                Log.d(TAG, "下一页: "+lianjie.get(i).select("a[href]").text());
-            }
+//            for (int i = 0; i <xiayiye.size() ; i++) {
+//                Log.d(TAG, "下一页: "+xiayiye.get(index).select("a[href]"));
+//            }
             //打印出标题
             for (int i = 0; i < lie.size(); i++) {
                 Log.d(TAG, "queryNetDataList: "+lie.get(i).select("a[href]").text());
@@ -60,4 +60,6 @@ public class MYBT {
         }
         return list;
     }
+
+
 }
