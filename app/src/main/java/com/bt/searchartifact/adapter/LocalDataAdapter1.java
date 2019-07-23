@@ -1,6 +1,7 @@
 package com.bt.searchartifact.adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,8 +23,8 @@ import java.util.List;
  * DEC:
  */
 public class LocalDataAdapter1 extends BaseQuickAdapter<LocalDataBean, BaseViewHolder> {
-    Activity contex;
-    public LocalDataAdapter1( @Nullable List<LocalDataBean> data, Activity contex) {
+    Context contex;
+    public LocalDataAdapter1( @Nullable List<LocalDataBean> data, Context contex) {
         super(R.layout.item_localdata1, data);
         this.contex = contex;
     }

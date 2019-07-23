@@ -15,6 +15,8 @@
     <color name="bg_fff">#FFFFFF</color>
     <!--线条-->
     <color name="divider">#BDBDBD</color>
+    <!--shenz-->
+    <color name="shapr">#F5F3F3</color>
     <color name="yellow">#6F3B9AFF</color>
     <color name="bg">#E0E0E0</color>
     <color name="bg_soso">#802196F3</color>

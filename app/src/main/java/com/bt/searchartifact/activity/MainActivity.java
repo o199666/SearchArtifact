@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 
 import com.bt.searchartifact.R;
 import com.bt.searchartifact.adapter.LocalDataAdapter1;
@@ -22,6 +23,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -36,7 +38,6 @@ import static com.bt.searchartifact.utils.FilesUtil.filterVideo;
 
 public class MainActivity extends BaseActivity {
     public BottomNavigationView  bottomNavigationView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

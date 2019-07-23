@@ -43,7 +43,10 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
-
+    //对话框
+//    implementation 'com.kongzue.dialog:dialog:2.5.2'
+//    implementation 'com.github.yilylong:CBDialog:v1.0.7'
+    implementation 'com.kaopiz:kprogresshud:1.1.0'
 
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-14'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-14'

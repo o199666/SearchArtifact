@@ -2,11 +2,13 @@ package com.bt.searchartifact.base;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bt.searchartifact.R;
 import com.mylhyl.acp.Acp;
 import com.mylhyl.acp.AcpListener;
 import com.mylhyl.acp.AcpOptions;
@@ -68,4 +70,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void onRestart() {
         super.onRestart();
     }
+
+
 }

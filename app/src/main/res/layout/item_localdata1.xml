@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -49,13 +47,6 @@
             app:layout_constraintLeft_toRightOf="@id/local_iv"
             app:layout_constraintTop_toBottomOf="@id/localsize_tv" />
 
-        <!--<TextView-->
-        <!--android:id="@+id/localtime_tv"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:gravity="center"-->
-        <!--android:text="播放时长"-->
-        <!--app:layout_constraintHorizontal_weight="1" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

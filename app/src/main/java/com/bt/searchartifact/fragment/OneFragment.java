@@ -1,6 +1,7 @@
 package com.bt.searchartifact.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bt.searchartifact.R;
+import com.bt.searchartifact.activity.PlayActivity;
 import com.bt.searchartifact.adapter.LocalDataAdapter1;
 import com.bt.searchartifact.base.BaseFragment;
 import com.bt.searchartifact.bean.LocalDataBean;
@@ -47,6 +50,7 @@ import static com.bt.searchartifact.utils.FilesUtil.getList;
  */
 public class OneFragment extends BaseFragment {
     private View view;
+    private TextView title;
     File sd = new File(Environment.getExternalStorageDirectory().getPath());
     List<LocalDataBean> localDataBeans = new ArrayList<>();
     private LocalDataAdapter1 adapter1;
@@ -64,22 +68,34 @@ public class OneFragment extends BaseFragment {
     protected void netData() {
         searchLocalFiles();
     }
+
     @Override
     protected void initView() {
 
+        TextView textView = getActivity().findViewById(R.id.title_tv);
+        textView.setText("本地视频");
     }
+
     @SuppressLint("WrongConstant")
     public void setView(List<LocalDataBean> localDataBeans) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        adapter1 = new LocalDataAdapter1(localDataBeans, getActivity());
+        adapter1 = new LocalDataAdapter1(localDataBeans, getContext());
         //获取布局文件
-        View v=getLayoutInflater().inflate(R.layout.empty,null);
+        View v = getLayoutInflater().inflate(R.layout.empty, null);
         //一句话为null
         adapter1.setEmptyView(v);
         adapter1.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         recyclerView.setAdapter(adapter1);
-        if (localDataBeans.size()==0){
-        }
+        adapter1.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(getContext(), PlayActivity.class);
+                intent.putExtra("getFileName", localDataBeans.get(position).getFileName());
+                intent.putExtra("getFilePtah", localDataBeans.get(position).getFilePtah());
+                intent.putExtra("getFileImag", localDataBeans.get(position).getFileImag());
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -88,7 +104,8 @@ public class OneFragment extends BaseFragment {
         Observable.create(new ObservableOnSubscribe<List<LocalDataBean>>() {
             @Override
             public void subscribe(ObservableEmitter<List<LocalDataBean>> emitter) throws Exception {
-                emitter.onNext( filterVideo(getList(getContext())));
+                localDataBeans = filterVideo(getList(getContext()));
+                emitter.onNext(localDataBeans);
                 emitter.onComplete();
             }
         }).observeOn(AndroidSchedulers.mainThread())
@@ -101,7 +118,7 @@ public class OneFragment extends BaseFragment {
 
                     @Override
                     public void onNext(List<LocalDataBean> localDataBeans) {
-                        Log.e("aa",localDataBeans.size()+"");
+                        Log.e("aa", localDataBeans.size() + "");
                         setView(localDataBeans);
                     }
 
@@ -116,5 +133,7 @@ public class OneFragment extends BaseFragment {
                     }
                 });
     }
+
+
 
 }

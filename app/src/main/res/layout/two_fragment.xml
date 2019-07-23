@@ -9,7 +9,7 @@
         android:id="@+id/input_et"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        app:layout_constraintWidth_percent="0.68"
+        app:layout_constraintWidth_percent="0.72"
         android:layout_margin="5dp"
         android:paddingLeft="10dp"
         android:background="@drawable/sos_border"
@@ -25,18 +25,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <Button
+        android:layout_margin="5dp"
         app:layout_constraintWidth_percent="0.28"
         android:id="@+id/search_btn"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:text="搜索"
         android:textColor="@color/font_fff"
         android:gravity="center"
-        android:background="@drawable/sos_btn_text"
+        android:background="@drawable/btn_select"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/input_et"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"
         app:layout_constraintLeft_toLeftOf="parent"
