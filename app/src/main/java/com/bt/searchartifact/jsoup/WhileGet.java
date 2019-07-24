@@ -12,9 +12,9 @@ import java.util.List;
 
 import static com.bt.searchartifact.jsoup.MYBT.queryNetDataList;
 import static com.bt.searchartifact.jsoup.MYBT.queryNetDataListBtzz;
-import static com.bt.searchartifact.jsoup.MYBT.queryNetDataListCiLi;
 import static com.bt.searchartifact.jsoup.MYBT.queryNetDataListCiLiist;
 import static com.bt.searchartifact.jsoup.MYBT.queryNetDataListTuzzz;
+import static com.bt.searchartifact.jsoup.MYBT.queryNetDataSos;
 
 /**
  * Created by CWJ on 2019/7/23.
@@ -27,17 +27,18 @@ public class WhileGet {
     public static List<NetDataBean> whileSearch(String keyword, int index ) {
         List<NetDataBean> list = null;
         config.INDEX_FANY=10;
-        //兔子
+        //兔子 ① wall cili-item item-bar
+        //BT蚂蚁 ② wall search-item  item-bar
         list = queryNetDataListTuzzz(keyword, index);
         if (list.size() == 0) {
             //BT种子
             list = queryNetDataListBtzz(keyword, index);
             if (list.size() == 0) {
                 //磁力s
-                list = queryNetDataListCiLi(keyword, index);
-                if (list.size() == 0) {
-                    //磁力 list
-                    list = queryNetDataListCiLiist(keyword, index);
+
+                    //SOSO
+                    list = queryNetDataSos(keyword, index);
+
                     if (queryNetDataListCiLiist(keyword, index).size() == 0) {
                         //BT蚂蚁
                         list = queryNetDataList(keyword, index);
@@ -53,10 +54,6 @@ public class WhileGet {
                         return list;
 
                     }
-                } else {
-                    return list;
-
-                }
             } else {
                 return list;
 

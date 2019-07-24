@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
+import cn.waps.AppConnect;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -69,6 +71,7 @@ public class TwoFragment extends BaseFragment {
     private NetDataAdapter1 adapter1;
     private int listsize;
     private String key;
+    LinearLayout adlayout;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -78,6 +81,8 @@ public class TwoFragment extends BaseFragment {
         editText = view.findViewById(R.id.input_et);
         recyclerView = view.findViewById(R.id.recy_list2);
         RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
+        adlayout = view.findViewById(R.id.AdLinearLayout);
+        AppConnect.getInstance(getContext()).showBannerAd(getContext(), adlayout);
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
@@ -106,7 +111,7 @@ public class TwoFragment extends BaseFragment {
                 if (editText.getText().toString().trim().equals("")) {
                     Toast.makeText(getContext(), "请输入你要查询的关键字", Toast.LENGTH_SHORT).show();
                 } else {
-                   showDialog("搜索中...");
+                    showDialog("搜索中...");
                     key = editText.getText().toString().trim();
                     indexs = 1;
                     searchBt(editText.getText().toString().trim(), indexs);
@@ -182,12 +187,12 @@ public class TwoFragment extends BaseFragment {
                     @Override
                     public void onNext(List<NetDataBean> NetDataBean) {
                         listsize = NetDataBean.size();
-                        if (hud!=null){
+                        if (hud != null) {
                             hud.dismiss();
                         }
-                        if (listsize>0){
+                        if (listsize > 0) {
                             setAdapter1(NetDataBean);
-                        }else{
+                        } else {
                             Toast.makeText(getContext(), "没有查找到数据", Toast.LENGTH_SHORT).show();
                         }
                     }

@@ -48,6 +48,7 @@ import static com.bt.searchartifact.utils.FilesUtil.getList;
  * Ver:1
  * DEC:
  */
+
 public class OneFragment extends BaseFragment {
     private View view;
     private TextView title;
@@ -55,6 +56,8 @@ public class OneFragment extends BaseFragment {
     List<LocalDataBean> localDataBeans = new ArrayList<>();
     private LocalDataAdapter1 adapter1;
     private RecyclerView recyclerView;
+    private int lastOffset;
+    private int lastPosition;
 
     @Nullable
     @Override
@@ -65,20 +68,45 @@ public class OneFragment extends BaseFragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        scrollToPosition();
+    }
+
+
+    @Override
     protected void netData() {
         searchLocalFiles();
     }
 
     @Override
     protected void initView() {
-
         TextView textView = getActivity().findViewById(R.id.title_tv);
         textView.setText("本地视频");
     }
 
+    LinearLayoutManager layoutManager;
+
     @SuppressLint("WrongConstant")
     public void setView(List<LocalDataBean> localDataBeans) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setSaveEnabled(true);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if(recyclerView.getLayoutManager() != null) {
+                    getPositionAndOffset();
+                }
+            }
+        });
+
         adapter1 = new LocalDataAdapter1(localDataBeans, getContext());
         //获取布局文件
         View v = getLayoutInflater().inflate(R.layout.empty, null);
@@ -99,6 +127,7 @@ public class OneFragment extends BaseFragment {
 
 
     }
+
 
     public void searchLocalFiles() {
         Observable.create(new ObservableOnSubscribe<List<LocalDataBean>>() {
@@ -135,5 +164,29 @@ public class OneFragment extends BaseFragment {
     }
 
 
+
+    /**
+     * 记录RecyclerView当前位置
+     */
+    private void getPositionAndOffset() {
+     layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+        //获取可视的第一个view
+        View topView = layoutManager.getChildAt(0);
+        if(topView != null) {
+            //获取与该view的顶部的偏移量
+            lastOffset = topView.getTop();
+            //得到该View的数组位置
+            lastPosition = layoutManager.getPosition(topView);
+        }
+    }
+
+    /**
+     * 让RecyclerView滚动到指定位置
+     */
+    private void scrollToPosition() {
+        if(recyclerView.getLayoutManager() != null && lastPosition >= 0) {
+            ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(lastPosition, lastOffset);
+        }
+    }
 
 }

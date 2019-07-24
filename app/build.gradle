@@ -19,36 +19,43 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    useLibrary 'org.apache.http.legacy'
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    api "android.arch.lifecycle:extensions:1.1.1"
-// https://mvnrepository.com/artifact/androidx.navigation/navigation-fragment
-    implementation group: 'androidx.navigation', name: 'navigation-fragment', version: '2.0.0'
-// https://mvnrepository.com/artifact/androidx.navigation/navigation-ui
-    implementation group: 'androidx.navigation', name: 'navigation-ui', version: '2.0.0'
+    api 'android.arch.lifecycle:extensions:1.1.1'
+    // https://mvnrepository.com/artifact/androidx.navigation/navigation-fragment
+    implementation 'androidx.navigation:navigation-fragment:2.0.0'
+    // https://mvnrepository.com/artifact/androidx.navigation/navigation-ui
+    implementation 'androidx.navigation:navigation-ui:2.0.0'
     implementation 'com.android.support:design:29.0.0'
     implementation 'com.android.support:cardview-v7:29.0.0'
     implementation 'org.jsoup:jsoup:1.12.1'
-    implementation  'com.mylhyl:acp:1.2.0'
+    implementation 'com.mylhyl:acp:1.2.0'
     implementation 'cn.jzvd:jiaozivideoplayer:7.0.4'
-    implementation group: 'com.github.bumptech.glide', name: 'glide', version: '4.9.0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
     //对话框
-//    implementation 'com.kongzue.dialog:dialog:2.5.2'
-//    implementation 'com.github.yilylong:CBDialog:v1.0.7'
+    //    implementation 'com.kongzue.dialog:dialog:2.5.2'
+    //    implementation 'com.github.yilylong:CBDialog:v1.0.7'
     implementation 'com.kaopiz:kprogresshud:1.1.0'
-
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-14'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-14'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation files('libs/AppOffer_3.0.3.jar')
+
+
+    implementation 'cn.bmob.android:bmob-sdk:3.7.3-rc1'
+    implementation 'com.squareup.okio:okio:2.1.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+
 }

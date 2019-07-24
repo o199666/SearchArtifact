@@ -20,4 +20,6 @@
     <color name="yellow">#6F3B9AFF</color>
     <color name="bg">#E0E0E0</color>
     <color name="bg_soso">#802196F3</color>
+    <!--luanche_color-->
+    <color name="luanche_color">#4B53ABF3</color>
 </resources>

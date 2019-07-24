@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
 import com.bt.searchartifact.R;
 import com.bt.searchartifact.adapter.LocalDataAdapter1;
@@ -55,7 +57,25 @@ public class MainActivity extends BaseActivity {
 
 
     }
+// 第二种方法（再按一次退出程序）
+	private long exitTime = 0;
 
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK
+				&& event.getAction() == KeyEvent.ACTION_DOWN) {
+			if ((System.currentTimeMillis() - exitTime) > 2000) {
+				Toast.makeText(getApplicationContext(), "再按一次退出程序",
+						Toast.LENGTH_SHORT).show();
+				exitTime = System.currentTimeMillis();
+			} else {
+				finish();
+				System.exit(0);
+			}
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
 
     @Override
     public void initDate() {

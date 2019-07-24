@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
+
     <TextView
         android:id="@+id/title_tv"
         android:layout_width="match_parent"
@@ -13,6 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:focusableInTouchMode="true"
         android:gravity="center"
         android:textColor="@color/font_fff"
         android:text="本地视频"

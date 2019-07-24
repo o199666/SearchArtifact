@@ -3,6 +3,7 @@ package com.bt.searchartifact.jsoup;
 import android.util.Log;
 
 import com.bt.searchartifact.bean.NetDataBean;
+import com.bt.searchartifact.config.config;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
+import static com.bt.searchartifact.config.config.S_BT_CILIMM_List;
+import static com.bt.searchartifact.config.config.S_BT_CILIMM_SOSO_1;
+import static com.bt.searchartifact.config.config.S_BT_ZZ_1;
 
 /**
  * Created by CWJ on 2019/7/20.
@@ -84,7 +88,44 @@ public class MYBT {
      */
     public static List<NetDataBean> queryNetDataListTuzzz(String keyword, int index) {
         List<NetDataBean> list = new ArrayList<>();
-        String url1 = "https://bttutu.xyz/tu/" + keyword + "/time-" + index + ".html";
+        String url1 = config.S_BT_TZ_1 + keyword + "/time-" + index + ".html";
+
+        Log.e("lianjie:--", url1);
+        try {
+            Document document = Jsoup.connect(url1)
+                    .header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0")
+                    //如果是这种方式，这里务必带上
+                    .header("Connection", "close")
+                    //超时时间
+                    .timeout(8000)
+                    .get();
+            Element wall = document.getElementById("wall");
+            //获取标题
+            Elements lie = wall.getElementsByAttributeValue("class", "cili-item");
+            //打印出标题
+            for (int i = 0; i < lie.size(); i++) {
+                String name = lie.get(i).select("a[href]").text();
+                String size = wall.getElementsByAttributeValue("class", "item-bar").get(i).select("span").get(2).text();
+                String uri = wall.getElementsByAttributeValue("class", "item-bar").get(i).select("a[href]").get(0).select("a").attr("href");
+                Log.d(TAG, "标题x: " + name);
+                Log.d(TAG, "大小x: " + size);
+                Log.d(TAG, "clix: " + uri);
+                name= name.substring(0,name.length()-9);
+
+                list.add(new NetDataBean(name,uri,size));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    /*
+    soso
+    * https://so.oshudan.com/s/%E5%95%8A%E5%95%8A/time-1.html
+    * */
+    public static List<NetDataBean> queryNetDataSos(String keyword, int index) {
+        List<NetDataBean> list = new ArrayList<>();
+        String url1 = S_BT_CILIMM_SOSO_1 + keyword + "/time-" + index + ".html";
 
         Log.e("lianjie:--", url1);
         try {
@@ -119,7 +160,7 @@ public class MYBT {
     //BT种子
     public static List<NetDataBean> queryNetDataListBtzz(String keyword, int index) {
         List<NetDataBean> list = new ArrayList<>();
-        String url1 = "https://btzzii.me/bt/" + keyword + "/time-" + index + ".html";
+        String url1 = S_BT_ZZ_1 + keyword + "/time-" + index + ".html";
 
         Log.e("lianjie:--", url1);
         try {
@@ -154,38 +195,6 @@ public class MYBT {
 
     // https://btdb.cilimm.xyz/s/
     //s
-    public static List<NetDataBean> queryNetDataListCiLi(String keyword, int index) {
-        List<NetDataBean> list = new ArrayList<>();
-        String url1 = "https://btdb.cilimm.xyz/s/" + keyword + "/time-" + index + ".html";
-        Log.e("lianjie:--", url1);
-        try {
-            Document document = Jsoup.connect(url1)
-                    .header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0")
-                    //如果是这种方式，这里务必带上
-                    .header("Connection", "close")
-                    //超时时间
-                    .timeout(8000)
-                    .get();
-            Element wall = document.getElementById("wall");
-            //获取标题
-            Elements lie = wall.getElementsByAttributeValue("class", "cili-item");
-            //打印出标题
-            for (int i = 0; i < lie.size(); i++) {
-                String name = lie.get(i).select("a[href]").text();
-                String size = wall.getElementsByAttributeValue("class", "item-bar").get(i).select("span").get(2).text();
-                String uri = wall.getElementsByAttributeValue("class", "item-bar").get(i).select("a[href]").get(0).select("a").attr("href");
-                Log.d(TAG, "标题x: " + name);
-                Log.d(TAG, "大小x: " + size);
-                Log.d(TAG, "clix: " + uri);
-                name= name.substring(0,name.length()-9);
-
-                list.add(new NetDataBean(name,uri,size));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
 
     /**
      * https://btbt.cilimm.xyz/list/%E8%8B%8D%E4%BA%95%E7%A9%BA/1/time_d
@@ -196,7 +205,7 @@ public class MYBT {
      */
     public static List<NetDataBean> queryNetDataListCiLiist(String keyword, int index) {
         List<NetDataBean> list = new ArrayList<>();
-        String url1 = "https://btbt.cilimm.xyz/list/" + keyword + "/" + index + "/time_d";
+        String url1 = S_BT_CILIMM_List + keyword + "/" + index + "/time_d";
         Log.e("lianjie:--", url1);
         try {
             Document document = Jsoup.connect(url1)

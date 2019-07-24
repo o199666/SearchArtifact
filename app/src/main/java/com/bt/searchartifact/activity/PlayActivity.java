@@ -36,7 +36,10 @@ public class PlayActivity extends BaseActivity {
         jzvdStd.setUp(paht
                 , name);
         Glide.with(this).load(img).into(jzvdStd.thumbImageView);
+        jzvdStd.setScreenFullscreen();
         jzvdStd.startVideo();
+
+
     }
     @Override
     public void initView() {
@@ -45,5 +48,25 @@ public class PlayActivity extends BaseActivity {
     @Override
     public void initDate() {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (jzvdStd.backPress()) {
+            return;
+        }
+        super.onBackPressed();
     }
 }
