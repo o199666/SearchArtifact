@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import cn.waps.AppConnect;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -69,6 +70,8 @@ public class MainActivity extends BaseActivity {
 						Toast.LENGTH_SHORT).show();
 				exitTime = System.currentTimeMillis();
 			} else {
+                AppConnect.getInstance(this).close();
+
 				finish();
 				System.exit(0);
 			}

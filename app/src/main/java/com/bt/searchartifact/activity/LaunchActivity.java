@@ -51,7 +51,9 @@ public class LaunchActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
         Bmob.initialize(this, "c392fc785f10ec48b7e1f8d708f28478");
-        AppConnect.getInstance("bff0ba8f0022daf43595d39db941ffeb", "APP_PID", this);
+        AppConnect.getInstance("bff0ba8f0022daf43595d39db941ffeb", "anzhi", this);
+        AppConnect.getInstance(this).initPopAd(this);
+        AppConnect.getInstance(this).showPopAd(this);
         text_time = findViewById(R.id.tv_time);
         getUril();
     }

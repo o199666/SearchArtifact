@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:gravity="center|left"
             android:textSize="@dimen/text_size_14sp"
+            android:visibility="gone"
             android:background="@drawable/sos_btn_text"
             app:layout_constraintLeft_toRightOf="@id/local_iv"
             app:layout_constraintTop_toBottomOf="@id/localtitle_tv" />

@@ -111,3 +111,10 @@
 -keep class com.android.internal.http.multipart.**{*;}
 -keep class org.apache.commons.**{*;}
 -keep class org.apache.http.**{*;}
+
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}
+
+-keep public class cn.waps.** {*;}
+-keep public interface cn.waps.** {*;}
+-dontwarn cn.waps.**

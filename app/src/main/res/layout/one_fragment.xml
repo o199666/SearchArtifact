@@ -5,7 +5,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
+    <LinearLayout android:id="@+id/AdLinearLayout"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_height="56dp"
+        android:gravity="center_horizontal">
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recy_list"
         android:layout_width="match_parent"

@@ -14,11 +14,13 @@ import com.bumptech.glide.Glide;
 
 import java.util.logging.Logger;
 
-import cn.jzvd.JzvdStd;
+import cn.jzvd.JZVideoPlayer;
+import cn.jzvd.JZVideoPlayerStandard;
+
 
 public class PlayActivity extends BaseActivity {
     //节操浏览器
-    public JzvdStd jzvdStd;
+    public JZVideoPlayerStandard jzvdStd;
     private String paht;
     private String name;
     private String img;
@@ -30,14 +32,12 @@ public class PlayActivity extends BaseActivity {
         jzvdStd = findViewById(R.id.jzvd);
         paht = getIntent().getStringExtra("getFilePtah");
         Log.d("-------------------",paht) ;
-        Toast.makeText(this, paht, Toast.LENGTH_SHORT).show();
         name = getIntent().getStringExtra("getFileName");
         img = getIntent().getStringExtra("getFileImag");
-        jzvdStd.setUp(paht
-                , name);
+
+        jzvdStd.setUp(paht, JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL,name);
         Glide.with(this).load(img).into(jzvdStd.thumbImageView);
-        jzvdStd.setScreenFullscreen();
-        jzvdStd.startVideo();
+        jzvdStd.startWindowFullscreen();
 
 
     }
@@ -53,13 +53,12 @@ public class PlayActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        jzvdStd.releaseAllVideos();
     }
 
     @Override

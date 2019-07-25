@@ -30,6 +30,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.waps.AppConnect;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -58,12 +59,15 @@ public class OneFragment extends BaseFragment {
     private RecyclerView recyclerView;
     private int lastOffset;
     private int lastPosition;
+    LinearLayout adlayout;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.one_fragment, container, false);
         recyclerView = view.findViewById(R.id.recy_list);
+          adlayout =view.findViewById(R.id.AdLinearLayout);
+        AppConnect.getInstance(getContext()).showBannerAd(getContext(), adlayout);
         return view;
     }
 

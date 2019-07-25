@@ -82,7 +82,9 @@ public class TwoFragment extends BaseFragment {
         recyclerView = view.findViewById(R.id.recy_list2);
         RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
         adlayout = view.findViewById(R.id.AdLinearLayout);
+        //广告条
         AppConnect.getInstance(getContext()).showBannerAd(getContext(), adlayout);
+
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
